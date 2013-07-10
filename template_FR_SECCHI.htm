@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//FR" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<TITLE>Transparence de l'eau (profondeur en mètres d’après le disque Secchi)</TITLE>
+	
+    <!--PRIMARY-->
+    <meta name="dc.title" content=" />
+    <meta property="og:title" content=" />
+    <meta name="dc.description" content=" />
+    <meta name="description" content=" />
+    <meta name="dcterms.audience" content=" />
+    <meta name="dc.identifier" scheme="URI" content=" />
+    <meta name="dc.date.created" scheme="W3CDTF" content=" />
+    <meta name="dc.date.issued" scheme="W3CDTF" content=" />
+    <meta name="dc.date.modified" scheme="W3CDTF" content=" />
+    <!--PRIMARY-->
+    
+    <!--CONTROLLED-->
+    <meta name="dc.subject" scheme="gccore" content=" />
+    <meta name="Keywords" content=" />
+    <meta name="dc.type" scheme="oncatype" content=" />
+    <!--CONTROLLED-->
+    
+    <!--FACEBOOK-->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content=" />
+    <meta property="og:image" content=" />
+    <meta property="og:site_name" content=" />
+    <meta property="og:description" content=" />
+    <!--FACEBOOK-->	
+	
+	<!--SECONDARY-->
+    <meta name="dc.format" scheme="IMT" content="text/html" />
+
+    <meta name="dc.creator" content="Gouvernement de l'Ontario, Ministere de l'Environnement" />
+    <meta name="dc.publisher" content="Gouvernement de l'Ontario, Ministere de l'Environnement" />
+    <meta name="dc.contributor" content="Gouvernement de l'Ontario, Ministere de l'Environnement" />
+    <meta name="dc.language" scheme="ISO639-2" content="fre" />
+    <meta name="dc.coverage.jurisdiction" content="Province d'Ontario" />
+    <meta name="dc.coverage.spatial" content="Ontario, Canada" />
+    <meta name="dc.rights.intellectualProperty" content="Renseignements sur les droits d'auteur Imprimeur de la Reine pour l'Ontario, 2009 - 2010" />
+    <meta name="go.contact.content" content="nmu.moe@ontario.ca" />
+    <meta name="go.contact.technical" content="webmaster.moe@ontario.ca" />
+
+    <!--SECONDARY-->
+	<link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/new.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/master.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/changeme.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/mobile.css" type="text/css" media="handheld" />
+    
+    <link rel="icon" type="image/png" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/images/trillium4.ico" />
+    
+    <script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministryscripts/scripts/scripts.js"></script>
+
+	<style type="text/css">
+      .js #smenu3 {display:none;}
+      .js #smenu4 {display:none;}
+      .js #smenu5 {display:none;}
+      .js #smenu6 {display:none;}
+      .js #smenu7 {display:none;}
+    </style>
+    
+    <script type="text/javascript">
+      document.getElementsByTagName('html')[0].className = 'js';
+    </script>
+	<meta content="MSHTML 6.00.2900.3698" name="GENERATOR" />
+	<style type="text/css">
+		.lakepartner { width:700px; margin-right:-3px; border-spacing:1px; border-collapse:separate !important; border:1px #000000 solid; }	
+		.lakepartner th { padding:2px; font-size:11px; border:1px #000000 solid; vertical-align:middle; text-align:center; }	  
+		.lakepartner td { padding:2px; font-size:11px; border:1px #000000 solid; text-align:center; }
+	</style>
+	
+	<style type="text/css">table.lakepartner { border-collapse: collapse; border-color: #000; }
+		table.lakepartner th { background-color: #666; color: #FFF; padding: 3px; }
+		table.lakepartner td { padding: 3px; }</style>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="secchi_${ID}.js"></script>	
+	<script type="text/javascript">
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawChart);
+			
+			function drawChart() {
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Année');
+				data.addColumn('number', 'Mesure du disque Secchi (m)');
+				data.addRows(dataArray.length+1);
+				
+				for (var i=0; i<dataArray.length+1; i++){
+					if(i == 0){
+						var year = "" + (dataArray[0].year - 1)
+						data.setValue(0, 0, year);
+						data.setValue(0, 1, 0);	
+					}else{
+						data.setValue(i, 0, "" + dataArray[i-1].year );
+						data.setValue(i, 1, dataArray[i-1].value);	
+					}					
+				}
+				var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));     
+				chart.draw(data, {width: 700, height: 480, colors:['#d4bfff'],     
+							hAxis: {title: 'Année', titleColor:'black'}, vAxis: {title: 'Mesure du disque Secchi (m)', minValue: 0.0}
+							});
+			}
+			window.onload = function (){
+				var str = "	<table class='lakepartner' border='1'><caption><h3>Transparence de l'eau (profondeur en mètres d’après le disque Secchi)</h3></caption><tbody><tr><th scope='col'>Année</th><th scope='col'>Mesure du disque Secchi (m)</th></tr><tr><td>";				
+				strArray = [];
+				for (var i=0; i<dataArray.length; i++){
+					strArray.push(dataArray[i].year +  "</td><td>" + dataArray[i].value);
+				}
+				document.getElementById("data_table").innerHTML =  str + strArray.join("</td></tr><tr><td>") + "</td></tr></tbody></table>";			
+			}
+		</script>	
+</head>
+<body id="home">
+<div id="wrapper">
+  <div id="header"> 
+  
+    <script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/groups/lr/@enetemplates/documents/developerfile/moe_header_fr.js"></script>
+    
+  </div>
+
+  <a name="top" id="top"></a>
+ 
+<div id="right_column">
+<h1>${LAKENAME} (STN ${STN}, N&deg; du lieu ${SITEID})</h1>
+<strong>${SITEDESC}</strong>
+<p>Le Partenariat pour la protection des lacs ontariens est un programme de surveillance de la qualité de l’eau qui fait appel à des bénévoles de toute la province. Les bénévoles recueillent des échantillons d’eau d’un lac pour mesurer sa teneur en phosphore total et notent chaque mois des données sur la transparence de l’eau. Ces données permettent de noter rapidement les changements dans l'équilibre nutritif ou la transparence de l'eau du lac, qu'ils soient liés à l'aménagement des berges, au changement climatique ou à d’autres sources de perturbation.</p><p>Quelque 800 bénévoles évaluent la teneur en phosphore total de l’eau des lacs de l’Ontario dans 728 lieux.</p><p>Une teneur élevée en phosphore peut faire baisser la transparence de l’eau, car le phosphore stimule la croissance des algues. Cependant, la quantité de phosphore n’est pas le seul facteur qui altère la pénétration de la lumière dans le lac, car la quantité de carbone organique dissous (COD) ou de turbidité non biologique peuvent aussi être en cause. La transparence de l’eau peut aussi être altérée par des espèces envahissantes, comme les moules zébrées. Par conséquent, il est toujours préférable d’évaluer l’équilibre nutritif d’un lac en mesurant la teneur en phosphore total de l’eau. Néanmoins, il est utile de mesurer la transparence de l’eau pour noter les changements qui ne pourraient pas être décelés par la seule mesure de la teneur en phosphore total, comme une invasion de moules zébrées.</p><p><a href="JavaScript:window.print();">Imprimer cette page</a></p>      <center><h3>Transparence de l'eau (profondeur en mètres d’après le disque Secchi)</h3></center><center><div id="chart_div"></div><br>	
+<br>
+<div id="data_table"></div>
+</center>
+		<br><br>Si vous avez des suggestions ou trouvez des erreurs, envoyez un courriel à <a href='mailto:lakepartner@ontario.ca?subject=Erreur de Portail'>lakepartner@ontario.ca</a>.
+		</div>
+
+  <div id="left_column">
+ 
+ 	<div class="leftnav">
+      <div class="photocap nav_top mycolour">&nbsp;</div>
+      <div class="mycolour"><h2 class="header"><a style="display:block;" href="javascript:void(0)" onclick="showHide('smenu1');return false;">Partenariat pour la protection des lacs ontariens<img src="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/images/arrow_down.gif" width="9" height="9" alt="" title="Open the explore menu" id="smenu1_arrow" /></a></h2></div>
+      <ul class="menu clear" id="smenu1" style="display:block;">
+        <li><a href="http://www.ene.gov.on.ca/environment/fr/local/lake_partner_program/index.htm">Retour à Partenariat pour la protection des lacs ontariens</a></li>
+		<li><a href="../LakePartner_Accessible_fr.htm">Version accessible</a></li>
+      </ul>  
+    </div>
+    
+    <div id="second_nav"></div>
+	
+	<script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/groups/lr/@enetemplates/documents/developerfile/moe_secondary_fr.js"></script>
+ 
+  </div>
+  <div id="footer">
+
+    
+    <script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/groups/lr/@enetemplates/documents/developerfile/moe_footer_fr.js"></script>
+    
+  </div>
+</div>
+</body>
+</html>

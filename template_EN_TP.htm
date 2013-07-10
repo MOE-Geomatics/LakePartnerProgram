@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<TITLE>Average Total Phosphorus (TP) Concentration (&micro;g/L)</TITLE>
+		
+    <!--PRIMARY-->
+    <meta name="dc.title" content="" />
+    <meta property="og:title" content="" />
+
+    <meta name="dc.description" content="" />
+    <meta name="description" content="" />
+    <meta name="dcterms.audience" content="" />
+    <meta name="dc.identifier" scheme="URI" content="" />
+    <meta name="dc.date.created" scheme="W3CDTF" content="" />
+    <meta name="dc.date.issued" scheme="W3CDTF" content="" />
+    <meta name="dc.date.modified" scheme="W3CDTF" content="" />
+    <!--PRIMARY-->
+    
+    <!--CONTROLLED-->
+
+    <meta name="dc.subject" scheme="gccore" content="" />
+    <meta name="Keywords" content="" />
+    <meta name="dc.type" scheme="oncatype" content="" />
+    <!--CONTROLLED-->
+    
+    <!--FACEBOOK-->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="" />
+
+    <meta property="og:description" content="" />
+    <!--FACEBOOK-->	
+	
+	<!--SECONDARY-->
+    <meta name="dc.format" scheme="IMT" content="text/html" />
+    <meta name="dc.creator" content="Government of Ontario, Ministry of the Environment" />
+    <meta name="dc.publisher" content="Government of Ontario, Ministry of the Environment" />
+    <meta name="dc.contributor" content="Government of Ontario, Ministry of the Environment" />
+    <meta name="dc.language" scheme="ISO639-2" content="Eng" />
+    <meta name="dc.coverage.jurisdiction" content="Province of Ontario" />
+
+    <meta name="dc.coverage.spatial" content="Ontario, Canada" />
+    <meta name="dc.rights.intellectualProperty" content="Copyright: Queen's Printer for Ontario, 2010" />
+    <meta name="go.contact.content" content="" />
+    <meta name="go.contact.technical" content="" />
+    <!--SECONDARY-->
+	<link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/new.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/master.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/changeme.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/print.css" type="text/css" media="print" />
+
+	<link rel="stylesheet" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/css/mobile.css" type="text/css" media="handheld" />
+	<link rel="icon" type="image/png" href="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/images/trillium4.ico" />
+	
+	<script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministryscripts/scripts/scripts.js"></script>
+	<style type="text/css">
+      .js #smenu3 {display:none;}
+      .js #smenu4 {display:none;}
+      .js #smenu5 {display:none;}
+      .js #smenu6 {display:none;}
+      .js #smenu7 {display:none;}
+    </style>
+    
+    <script type="text/javascript">
+      document.getElementsByTagName('html')[0].className = 'js';
+    </script>
+	<meta content="MSHTML 6.00.2900.3698" name="GENERATOR" />
+	<style type="text/css">
+		.lakepartner { width:700px; margin-right:-3px; border-spacing:1px; border-collapse:separate !important; border:1px #000000 solid; }	
+		.lakepartner th { padding:2px; font-size:11px; border:1px #000000 solid; vertical-align:middle; text-align:center; }	  
+		.lakepartner td { padding:2px; font-size:11px; border:1px #000000 solid; text-align:center; }
+	</style>
+	
+	<style type="text/css">table.lakepartner { border-collapse: collapse; border-color: #000; }
+		table.lakepartner th { background-color: #666; color: #FFF; padding: 3px; }
+		table.lakepartner td { padding: 3px; }</style>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="tp_${ID}.js"></script>	
+	<script type="text/javascript">
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawChart);
+			function greekSymbol(str) {return String.fromCharCode(str.charCodeAt(0) + (913 - 65));}
+			function getAverage(tp1, tp2){
+				var value = 0;
+				if((typeof(tp1) != "undefined") && (typeof(tp2) != "undefined")){
+					value = 0.5*(tp1 + tp2);
+				}else{
+					if((typeof(tp1) != "undefined")){
+						value = tp1;
+					}
+					if((typeof(tp2) != "undefined")){
+						value = tp2;
+					}					
+				}
+				return parseFloat(value.toFixed(2));
+				//return value;				
+			}
+			function drawChart() {
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Date');
+				data.addColumn('number', 'Average Concentration of Total Phosphorus (' + greekSymbol('l') +'g/L)');
+				data.addRows(dataArray.length);				
+				for (var i=0; i<dataArray.length; i++){
+					data.setValue(i, 0, dataArray[i].date);
+					data.setValue(i, 1, getAverage(dataArray[i].tp1, dataArray[i].tp2));	
+				}
+				var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));     
+				chart.draw(data, {width: 700, height: 480, colors:['#d4bfff'],     
+							hAxis: {title: 'Date', titleColor:'black'}, vAxis: {title: 'Average Concentration of Total Phosphorus (' + greekSymbol('l') +'g/L)', minValue: 0.0}
+							});
+			}
+			window.onload = function (){
+				var str = "<table class='lakepartner' border='1'><caption><h3>Average Total Phosphorus (TP) Concentration (&micro;g/L)</h3></caption><tbody><tr><th scope='col'>Date</th><th scope='col'>Sample 1 (&micro;g/L)</th><th scope='col'>Sample 2 (&micro;g/L)</th><th scope='col'>Average (&micro;g/L)</th></tr><tr><td>";
+				strArray = [];
+				for (var i=0; i<dataArray.length; i++){
+					var v1 = "";
+					if((typeof(dataArray[i].tp1) != "undefined")){
+						v1 = "" + (dataArray[i].tp1);
+					}
+					var v2 = "";
+					if((typeof(dataArray[i].tp2) != "undefined")){
+						v2 = "" + (dataArray[i].tp2);
+					}
+					avgString = "";
+					var avg = getAverage(dataArray[i].tp1, dataArray[i].tp2);
+					if(avg > 0){
+						avgString = "" + avg;
+					}
+					strArray.push(dataArray[i].date +  "</td><td>" + v1 +  "</td><td>" + v2 + "</td><td>" + avgString);
+				}
+				document.getElementById("data_table").innerHTML =  str + strArray.join("</td></tr><tr><td>") + "</td></tr></tbody></table>";			
+			}
+		</script>	
+</head>
+<body id="home">
+<div id="wrapper">
+  <div id="header"> 
+  
+    <script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/groups/lr/@enetemplates/documents/developerfile/moe_header.js"></script>
+  
+</div>
+  <a name="top" id="top"></a>
+  
+  <div id="right_column">
+<h1>${LAKENAME} (STN ${STN}, Site ID ${SITEID})</h1>
+<strong>${SITEDESC}</strong>
+<p>The Lake Partner Program is a province-wide, volunteer-based, water-quality monitoring program. Volunteers collect total phosphorus samples and make monthly water clarity observations on their lakes. This information will allow the early detection of changes in the nutrient status and/or the water clarity of the lake due to the impacts of shoreline development, climate change and other stresses.</p><p>Approximately 800 active volunteers monitor Secchi depth and total phosphorus at 728 locations in the lakes across Ontario.</p><p>Total phosphorus concentration are ideally used to interpret nutrient status in Ontario lakes, since phosphorus is the element that controls the growth of algae in most Ontario lakes. Increases in phosphorus will decrease water clarity by stimulating algal growth. In extreme cases, algal blooms will affect the aesthetics of the lake and/or cause taste and odour problems in the water.</p><p>Many limnologists place lakes into three broad categories with respect to nutrient status. Lakes with less that 10 μg/L TP are considered oligotrophic. These are dilute, unproductive lakes that rarely experience nuisance algal blooms. Lakes with TP between 10 and 20 μg/L are termed mesotrophic and are in the middle with respect to trophic status. These lakes show a broad range of characteristics and can be clear and unproductive at the bottom end of the scale or susceptible to moderate algal blooms at concentration near 20 μg/L. Lakes over 20 μg/L are classed as eutrophic and may exhibit persistent, nuisance algal blooms.</p><p>Note: Tea stained lakes, with high dissolved organic carbon (DOC), are called dystrophic lakes and do not share the algal/TP relationships described above. Generally there can be more TP in a dystrophic lake without the occurrence of algal blooms. The chemistry of these lakes is quite complex.</p><p><a href="JavaScript:window.print();">Print this page</a></p>      <center><h3>Average Total Phosphorus (TP) Concentration (&micro;g/L)</h3></center><center><div id="chart_div"></div><br>
+	<br>
+	<div id="data_table"></div>
+</center>
+		<br><br>If you have some suggestions or find some errors, please send an Email to <a href='mailto:lakepartner@ontario.ca?subject=Portal Error Submission'>lakepartner@ontario.ca</a>.
+		</div>
+<div id="left_column">
+
+ 
+ 	<div class="leftnav">
+      <div class="photocap nav_top mycolour">&nbsp;</div>
+      <div class="mycolour"><h2 class="header"><a style="display:block;" href="javascript:void(0)" onclick="showHide('smenu1');return false;">Provincial Groundwater Monitoring Network<img src="http://www.ene.gov.on.ca/stdprodconsume/fragments/ministrystylesheets/images/arrow_down.gif" width="9" height="9" alt="" title="Open the explore menu" id="smenu1_arrow" /></a></h2></div>
+      <ul class="menu clear" id="smenu1" style="display:block;">
+	       <li><a href="http://www.ene.gov.on.ca/environment/en/local/lake_partner_program/index.htm">Return to Lake Partner Program</a></li>
+	       <li><a href="../LakePartner_Accessible_en.htm">Accessibile Version</a></li>
+      </ul>  
+    </div>
+
+    
+    <div id="second_nav"></div>
+	
+	<script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/groups/lr/@enetemplates/documents/developerfile/moe_secondary.js"></script>
+  
+  </div>
+  <div id="footer">
+    
+    <script type="text/javascript" src="http://www.ene.gov.on.ca/stdprodconsume/groups/lr/@enetemplates/documents/developerfile/moe_footer.js"></script>
+  </div>
+</div>
+</body>
+</html>
+
