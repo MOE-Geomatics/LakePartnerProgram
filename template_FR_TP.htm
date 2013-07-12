@@ -70,6 +70,7 @@
 		.lakepartner { width:700px; margin-right:-3px; border-spacing:1px; border-collapse:separate !important; border:1px #000000 solid; }	
 		.lakepartner th { padding:2px; font-size:11px; border:1px #000000 solid; vertical-align:middle; text-align:center; }	  
 		.lakepartner td { padding:2px; font-size:11px; border:1px #000000 solid; text-align:center; }
+		.lakepartner caption {font-size:1.2em;}
 	</style>
 	
 	<style type="text/css">table.lakepartner { border-collapse: collapse; border-color: #000; }
@@ -111,7 +112,7 @@
 							});
 			}
 			window.onload = function (){
-				var str = "<table class='lakepartner' border='1'><caption><h3>Concentration moyennes de phosphore total (&micro;g/L)</h3></caption><tbody><tr><th scope='col'>Date</th><th scope='col'>Échantillon 1 (&micro;g/L)</th><th scope='col'>Échantillon 2 (&micro;g/L)</th><th scope='col'>Moyenne (&micro;g/L)</th></tr><tr><td>";				
+				var str = "<table class='lakepartner' border='1'><caption>Concentration moyennes de phosphore total (&micro;g/L)</caption><tbody><tr><th scope='col'>Date</th><th scope='col'>Échantillon 1 (&micro;g/L)</th><th scope='col'>Échantillon 2 (&micro;g/L)</th><th scope='col'>Moyenne (&micro;g/L)</th></tr><tr><td>";				
 				strArray = [];
 				for (var i=0; i<dataArray.length; i++){
 					var v1 = "";

@@ -71,6 +71,7 @@
 		.lakepartner { width:700px; margin-right:-3px; border-spacing:1px; border-collapse:separate !important; border:1px #000000 solid; }	
 		.lakepartner th { padding:2px; font-size:11px; border:1px #000000 solid; vertical-align:middle; text-align:center; }	  
 		.lakepartner td { padding:2px; font-size:11px; border:1px #000000 solid; text-align:center; }
+		.lakepartner caption {font-size:1.2em;}
 	</style>
 	
 	<style type="text/css">table.lakepartner { border-collapse: collapse; border-color: #000; }
@@ -104,7 +105,7 @@
 							});
 			}
 			window.onload = function (){
-				var str = "	<table class='lakepartner' border='1'><caption><h3>Water Transparency (Secchi Depth in meters)</h3></caption><tbody><tr><th scope='col'>Year</th><th scope='col'>Secchi Depth (meters)</th></tr><tr><td>";
+				var str = "	<table class='lakepartner' border='1'><caption>Water Transparency (Secchi Depth in meters)</caption><tbody><tr><th scope='col'>Year</th><th scope='col'>Secchi Depth (meters)</th></tr><tr><td>";
 				strArray = [];
 				for (var i=0; i<dataArray.length; i++){
 					strArray.push(dataArray[i].year +  "</td><td>" + dataArray[i].value);
